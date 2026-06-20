@@ -83,7 +83,7 @@ PlayerSettings:
   androidApplicationEntry: 2
   defaultIsNativeResolution: 1
   macRetinaSupport: 1
-  runInBackground: 0
+  runInBackground: 1
   muteOtherAudioSources: 0
   Prepare IOS For Recording: 0
   Force IOS Speakers When Recording: 0
@@ -96,7 +96,7 @@ PlayerSettings:
   bakeCollisionMeshes: 0
   forceSingleInstance: 0
   useFlipModelSwapchain: 1
-  resizableWindow: 0
+  resizableWindow: 1
   useMacAppStoreValidation: 0
   macAppStoreCategory: public.app-category.games
   gpuSkinning: 1
@@ -108,7 +108,7 @@ PlayerSettings:
   xboxEnableFitness: 0
   visibleInBackground: 1
   allowFullscreenSwitch: 1
-  fullscreenMode: 1
+  fullscreenMode: 3
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
   xboxEnableGuest: 0
@@ -144,7 +144,10 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  - {fileID: 7484916334965905792, guid: e2d2841eb5db8d642a0929f402dc8641, type: 2}
+  - {fileID: -4914388127558135797, guid: a411f2aaacefa2c49830fbef2b66c000, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -524,7 +527,10 @@ PlayerSettings:
       m_Height: 720
       m_Kind: 1
       m_SubKind: 
-  m_BuildTargetBatching: []
+  m_BuildTargetBatching:
+  - m_BuildTarget: Standalone
+    m_StaticBatching: 1
+    m_DynamicBatching: 0
   m_BuildTargetShaderSettings: []
   m_BuildTargetGraphicsJobs: []
   m_BuildTargetGraphicsJobMode: []
@@ -825,7 +831,25 @@ PlayerSettings:
   webGLCloseOnQuit: 0
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
+    EmbeddedLinux: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    GameCoreScarlett: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    GameCoreXboxOne: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    Kepler: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    LinuxHeadlessSimulation: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    Nintendo Switch: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    Nintendo Switch 2: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    PS4: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    PS5: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    QNX: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    Standalone: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
+    VisionOS: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    WebGL: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    Windows Store Apps: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK;USE_INPUT_SYSTEM_POSE_CONTROL;USE_STICK_CONTROL_THUMBSTICKS
+    XboxOne: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    iPhone: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
+    tvOS: ULTIMATEXR_USE_WINDOWSMIXEDREALITY_SDK
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -924,11 +948,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 
+  cloudProjectId: efa77790-5f22-44c5-a66b-1ed88cd73f6a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
-  organizationId: 
+  projectName: ChatVsAndStreamer
+  organizationId: mercuriousreign
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
