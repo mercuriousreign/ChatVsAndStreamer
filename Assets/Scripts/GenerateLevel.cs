@@ -1,4 +1,7 @@
+using Unity.VectorGraphics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GenerateLevel : MonoBehaviour
 {
@@ -6,7 +9,8 @@ public class GenerateLevel : MonoBehaviour
     public Vector2 size;
     public float air = 30f;
     public float loop = 30f;
-
+    public int toscore =0;
+    public TextMeshProUGUI scoring;
 
     private void Awake()
     {
@@ -15,19 +19,23 @@ public class GenerateLevel : MonoBehaviour
             int randomlocationX = (int)Random.Range(0, size.x); 
             int randomlocationY = (int)Random.Range(0, size.y);
             GameObject.Instantiate(rocks[randomrock], new Vector3(randomlocationX, air, randomlocationY), Random.rotation);
+            if (rocks[randomrock].name == "CubePoints")
+            {
+                toscore++;
+            }
+
         }
 
-        // FIX: Changed x and y loop variables to floats to match size.x and size.y
-        //for (float x = 0; x <= size.x; x++)
-        //{
-        //    for (float y = 0; y <= size.y; y++)
-        //    {
-        //        if (Random.Range(0, 10) > 5)
-        //        {
-        //            GameObject.Instantiate(rocks[Random.Range(0, rocks.Length)], new Vector3(x, air, y), Random.rotation);
-        //        }
-        //    }
-        //}
+        scoring.text = "Green cubes to get is " + toscore.ToString();
+    }
+
+    public void addscore() {
+        toscore--;
+        scoring.text = "Green cubes to get is " + toscore.ToString();
+        if (toscore <= 0) {
+            SceneManager.LoadScene("You Win");
+        }
+
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

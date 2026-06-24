@@ -21,7 +21,8 @@ public class BoatController : MonoBehaviour
     public XRJoystick joystick;
     public XRPushButton onbutton;
     public XRLever onlever;
-    
+
+    public GenerateLevel level;
 
     void Start()
     {
@@ -55,9 +56,9 @@ public class BoatController : MonoBehaviour
         if (powerstatus) {
             rb.AddTorque(Vector3.up * (processedInput * maxturn), ForceMode.Acceleration);
             rb.AddForce(Vector3.forward * (joystick.value.y * maxaccel),ForceMode.VelocityChange);
-            print ("Joystick value"+joystick.value.y);
+            //print ("Joystick value"+joystick.value.y);
             
-            print("actual value "+Vector3.forward * (joystick.value.y * maxaccel));
+            //print("actual value "+Vector3.forward * (joystick.value.y * maxaccel));
         }
 
 
@@ -71,4 +72,13 @@ public class BoatController : MonoBehaviour
         //onbutton.toggleValue = powerstatus;
         onlever.value = powerstatus;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "CubePoints") {
+            level.addscore();
+            Destroy(collision.gameObject);
+        }
+    }
+
 }

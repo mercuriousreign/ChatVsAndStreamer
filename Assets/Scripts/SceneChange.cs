@@ -6,15 +6,16 @@ public class SceneChange : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public Scene s;
     public string scenename;
-    void Start()
-    {
-        
+    public Scene sceneobj;
+
+
+    public void SceneChangeFunction(string sceneid) { 
+        SceneManager.LoadScene(sceneid);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SceneChangeFunctionObj(Scene sceneid)
     {
-        
+        SceneManager.LoadScene(sceneid.name);
     }
 
     private void OnCollisionEnter(Collision collision)
