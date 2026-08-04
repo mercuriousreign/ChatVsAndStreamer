@@ -27,7 +27,7 @@ public class BoatControlJoyStick : MonoBehaviour
     void Update()
     {
         Vector2 thumbstickValue = thumbstickAction.action.ReadValue<Vector2>();
-        //print("value of thumb "+thumbstickValue);
+        print("value of thumb "+thumbstickValue);
         
         if (buttonAction.action.WasPressedThisFrame())
         {
@@ -35,8 +35,9 @@ public class BoatControlJoyStick : MonoBehaviour
         }
 
         if (onlever.value) {
-            //rb.AddTorque(Vector3.up * (thumbstickValue.x * maxturn), ForceMode.Acceleration);
-            rb.AddForce(Vector3.forward * (thumbstickValue * maxaccel), ForceMode.VelocityChange);
+            rb.AddTorque(Vector3.up * (thumbstickValue.x * maxturn), ForceMode.Acceleration);
+            rb.AddRelativeForce(Vector3.forward * (thumbstickValue.y * maxaccel), ForceMode.Acceleration); //used force it was ok
+            
         }
 
     }
@@ -44,7 +45,7 @@ public class BoatControlJoyStick : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "CubePoints")
+        if (collision.gameObject.name.Contains("CubePoints"))
         {
             level.addscore();
             Destroy(collision.gameObject);

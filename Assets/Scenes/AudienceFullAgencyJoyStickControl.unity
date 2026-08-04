@@ -338,7 +338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fae665bdc58ada54981ea4e8c7d152b5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14
+      value: 14.76
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fae665bdc58ada54981ea4e8c7d152b5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4005,7 +4005,7 @@ MonoBehaviour:
     m_Reference: {fileID: -60998027439631388, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rb: {fileID: 1174609149}
   level: {fileID: 1252654062}
-  maxaccel: 5
+  maxaccel: 20
   maxturn: 10
 --- !u!1001 &1201424261
 PrefabInstance:
@@ -5812,6 +5812,10 @@ PrefabInstance:
     - target: {fileID: 6693052528577237899, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7347985736721345035, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
