@@ -11,6 +11,9 @@ public class GenerateLevel : MonoBehaviour
     public float loop = 30f;
     public int toscore =0;
     public TextMeshProUGUI scoring;
+    public GameObject map;
+    public StreamerBotListener listener;
+    public StreamerBotMovement move;
 
     private void Awake()
     {

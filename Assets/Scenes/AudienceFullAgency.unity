@@ -3894,7 +3894,7 @@ MonoBehaviour:
   wheel: {fileID: 0}
   power: {fileID: 1465997618}
   powerobj: {fileID: 0}
-  maxaccel: 0.25
+  maxaccel: 0.45
   maxturn: 0.98
   powerstatus: 0
   boatwheel: {fileID: 948144652}
@@ -4885,6 +4885,9 @@ MonoBehaviour:
   loop: 30
   toscore: 0
   scoring: {fileID: 1408219784}
+  map: {fileID: 0}
+  listener: {fileID: 0}
+  move: {fileID: 0}
 --- !u!4 &1252654063
 Transform:
   m_ObjectHideFlags: 0
@@ -5722,7 +5725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1
+      value: 1.096
       objectReference: {fileID: 0}
     - target: {fileID: 1717954561962503726, guid: f6336ac4ac8b4d34bc5072418cdc62a0, type: 3}
       propertyPath: m_LocalRotation.w

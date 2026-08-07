@@ -3,11 +3,14 @@ using System.Collections.Concurrent;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class StreamerBotListener : MonoBehaviour
 {
-	private UdpClient udpClient;
+	[SerializeField]
+    private TextMeshProUGUI StreamerBot;
+    private UdpClient udpClient;
 	private int port = 11000;
 	private StreamerBotMovement movementScript;
 	private readonly ConcurrentQueue<string> pendingMessages = new();
@@ -23,11 +26,15 @@ public class StreamerBotListener : MonoBehaviour
 			udpClient = new UdpClient(port);
 			udpClient.BeginReceive(OnReceive, null);
 			Debug.Log($"[StreamerBotListener] Listening on UDP port {port} (Streamer.bot → this machine).");
-		}
+			StreamerBot.text = $"[StreamerBotListener] Listening on UDP port {port} (Streamer.bot → this machine).";
+
+        }
 		catch (SocketException e)
 		{
 			Debug.LogError($"[StreamerBotListener] Could not bind port {port}: {e.Message}. Another app may be using it.");
-		}
+			StreamerBot.text += $"[StreamerBotListener] Could not bind port {port}: {e.Message}. Another app may be using it.";
+
+        }
 	}
 
 	private void Update()

@@ -19,6 +19,7 @@ public class StreamerBotMovement : MonoBehaviour
     // This method handles your incoming UDP string
     public void ParseUDPMessage(string message)
 	{
+        Debug.Log(message);
         string[] fragment = message.Split(" ");
         Debug.Log(fragment+" "+fragment[0] + " " + fragment[1]);
         

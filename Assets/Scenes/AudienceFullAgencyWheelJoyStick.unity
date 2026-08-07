@@ -4035,6 +4035,18 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 2268396493395711724, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  buttonAction2:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 1863d31e-5e80-4d79-ad23-bc6c31ceddf8
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   thumbstickAction:
     m_UseReference: 1
     m_Action:
@@ -4049,6 +4061,8 @@ MonoBehaviour:
     m_Reference: {fileID: -60998027439631388, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rb: {fileID: 1174609149}
   level: {fileID: 1252654062}
+  controller: {fileID: 0}
+  audimpact: {fileID: 0}
   maxaccel: 5
   maxturn: 10
 --- !u!1001 &1201424261
@@ -7469,7 +7483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8135023674665499069, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8518324294302271954, guid: 58d0a4ac86f2348deb02f3880c71378e, type: 3}
       propertyPath: m_LocalPosition.x
