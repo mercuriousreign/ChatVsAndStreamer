@@ -9,7 +9,9 @@ using UnityEngine;
 public class StreamerBotListener : MonoBehaviour
 {
 	[SerializeField]
-    private TextMeshProUGUI StreamerBot;
+    private TextMeshProUGUI StreamerBotStatus;
+    [SerializeField]
+    private TextMeshProUGUI StreamerBotMSG;
     private UdpClient udpClient;
 	private int port = 11000;
 	private StreamerBotMovement movementScript;
@@ -26,13 +28,13 @@ public class StreamerBotListener : MonoBehaviour
 			udpClient = new UdpClient(port);
 			udpClient.BeginReceive(OnReceive, null);
 			Debug.Log($"[StreamerBotListener] Listening on UDP port {port} (Streamer.bot → this machine).");
-			StreamerBot.text = $"[StreamerBotListener] Listening on UDP port {port} (Streamer.bot → this machine).";
+			StreamerBotStatus.text = $"[StreamerBotListener] Listening on UDP port {port} (Streamer.bot → this machine).";
 
         }
 		catch (SocketException e)
 		{
 			Debug.LogError($"[StreamerBotListener] Could not bind port {port}: {e.Message}. Another app may be using it.");
-			StreamerBot.text += $"[StreamerBotListener] Could not bind port {port}: {e.Message}. Another app may be using it.";
+			StreamerBotStatus.text += $"[StreamerBotListener] Could not bind port {port}: {e.Message}. Another app may be using it.";
 
         }
 	}
@@ -59,6 +61,8 @@ public class StreamerBotListener : MonoBehaviour
 			byte[] receivedBytes = udpClient.EndReceive(res, ref remoteIp);
 			string message = Encoding.UTF8.GetString(receivedBytes);
 			Debug.Log($"[StreamerBotListener] UDP from {remoteIp}: {message}");
+			StreamerBotMSG.text = $"[StreamerBotListener] UDP from {remoteIp}: {message}";
+
 			pendingMessages.Enqueue(message);
 		}
 		catch (ObjectDisposedException)
