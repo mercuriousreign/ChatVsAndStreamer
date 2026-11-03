@@ -73,6 +73,20 @@ public class StreamerBotMovement : MonoBehaviour
 
         }
 
+
+        if (message.StartsWith("!vote")) {
+
+            string msg = fragment[1];
+            switch (msg) {
+                case "kill":
+                    this.gameObject.SetActive(false);
+                    break;
+                case "barrelroll":
+                    transform.Rotate(Vector3.forward, 180);
+                    break;
+            }
+        }
+
 		// if (message.StartsWith("jump")){
 		// 	rb.AddForce(Vector3.left * moveSpeed);
 		// 	//transform.Translate(Vector3.left * moveSpeed);
