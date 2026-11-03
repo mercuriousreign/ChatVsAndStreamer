@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Content.Interaction;
 
+//This is an controller based on InputActionProperty of VR
 public class BoatControlJoyStick : MonoBehaviour
 {
     

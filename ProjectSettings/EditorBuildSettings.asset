@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 033895cb9c7c7794ba384b351c70d9e7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AudienceFullAgency.unity
     guid: c6aa1cfc765f874409b28fc88f515235
   - enabled: 1
     path: Assets/Scenes/AudienceFullAgencyJoyStickControl.unity
     guid: 1fe4f326ec77c6d418421abe653a82d4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/AudienceFullAgencyWheelJoyStick.unity
     guid: e522a895c5a826a44b2e2635dcbc788c
   - enabled: 1

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Content.Interaction;
 
+//This is an diagetic controller for Boat
 public class BoatController : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
