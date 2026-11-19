@@ -15,6 +15,35 @@ public class StreamerBotMovement : MonoBehaviour
     public XRJoystick joystick;
     //public XRPushButton onbutton;
     public XRLever onlever;
+    BoatVoteEffect voteEffect;
+
+    BoatVoteEffect ResolveVoteEffect()
+    {
+        if (voteEffect != null)
+            return voteEffect;
+
+        BoatController boat = null;
+        if (rb != null)
+        {
+            BoatController onHull = rb.GetComponent<BoatController>();
+            if (onHull != null && onHull.isActiveAndEnabled)
+                boat = onHull;
+        }
+
+        if (boat == null)
+            boat = FindAnyObjectByType<BoatController>();
+
+        if (boat == null)
+        {
+            Debug.LogWarning("[StreamerBotMovement] No BoatController for vote effects.");
+            return null;
+        }
+
+        voteEffect = boat.GetComponent<BoatVoteEffect>();
+        if (voteEffect == null)
+            voteEffect = boat.gameObject.AddComponent<BoatVoteEffect>();
+        return voteEffect;
+    }
 
     // This method handles your incoming UDP string
     public void ParseUDPMessage(string message)
@@ -48,43 +77,37 @@ public class StreamerBotMovement : MonoBehaviour
         }
         if (message.StartsWith("!power"))
         {
-
-            //string msg = message.Replace("turn:","").Trim().ToLower();
-            //bool b = message.Contains("on");
-
-            //power.isOn = b;
-            //Debug.Log("success?");
             string msg = fragment[1];
+            if (msg == "on")
+            {
+                BoatVoteEffect active = ResolveVoteEffect();
+                if (active != null && active.BlocksPowerOn)
+                    return;
+            }
+
             switch (msg)
             {
                 case "on":
-                    //power.isOn = true;
-                    //onbutton.toggleValue = true;
                     onlever.value = true;
                     break;
                 case "off":
-                    //power.isOn = false;
-                    //onbutton.toggleValue = false;
                     onlever.value = false;
                     break;
-
-
             }
-
         }
 
 
         if (message.StartsWith("!vote")) {
-
-            string msg = fragment[1];
-            switch (msg) {
-                case "kill":
-                    this.gameObject.SetActive(false);
-                    break;
-                case "barrelroll":
-                    transform.Rotate(Vector3.forward, 180);
-                    break;
+            string msg = message.Substring(5).Trim().ToLowerInvariant().Replace(" ", "");
+            if (msg == "kill")
+            {
+                this.gameObject.SetActive(false);
+                return;
             }
+
+            BoatVoteEffect effect = ResolveVoteEffect();
+            if (effect != null)
+                effect.Apply(msg);
         }
 
 		// if (message.StartsWith("jump")){

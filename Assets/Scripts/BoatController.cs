@@ -24,47 +24,32 @@ public class BoatController : MonoBehaviour
     public XRLever onlever;
 
     public GenerateLevel level;
+    BoatVoteEffect voteEffect;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        
+        voteEffect = GetComponent<BoatVoteEffect>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (voteEffect == null)
+            voteEffect = GetComponent<BoatVoteEffect>();
+
         powerstatus = onlever.value;
-        //if (power.isOn)
-        //{
-        //    rb.AddTorque(Vector3.up * torque.value);
-
-        //    rb.AddForce(transform.forward * accelerator.value);
-        //}
-        //if (power.isOn)
-        //{
-        //    rb.AddRelativeTorque(Vector3.up * torque.value);
-        //    rb.AddForce(transform.forward * accelerator.value);
-        //}
-
-        //if (power.isOn) { 
-        //    rb.AddTorque(Vector3.up * wheel.transform.rotation.eulerAngles.x, 0);
-
-        //}
+        if (voteEffect != null && voteEffect.BlocksPowerOn)
+            powerstatus = false;
 
         float processedInput = (boatwheel.value * 2f) - 1f;
+        if (voteEffect != null && voteEffect.InvertSteering)
+            processedInput = -processedInput;
 
         if (powerstatus) {
             rb.AddTorque(Vector3.up * (processedInput * maxturn), ForceMode.Acceleration);
             rb.AddForce(Vector3.forward * (joystick.value.y * maxaccel),ForceMode.VelocityChange);
-            //print ("Joystick value"+joystick.value.y);
-            
-            //print("actual value "+Vector3.forward * (joystick.value.y * maxaccel));
         }
-
-
-
-
     }
 
     public void changePower() {
@@ -76,7 +61,7 @@ public class BoatController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "CubePoints") {
+        if (collision.gameObject.name.Contains("CubePoints")) {
             level.addscore();
             Destroy(collision.gameObject);
         }
